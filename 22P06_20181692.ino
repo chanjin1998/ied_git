@@ -47,7 +47,7 @@ float dist_target; // location to send the ball
 float dist_raw, dist_ema;    
 
 // Event periods
-unsigned long last_sampling_time_dist, last_sampling_time_servo, last_sampling_time_serial; // [3162] 거리, 서보, 시리얼에 대한 마지막 샘플링 시간을 나타내는 변수
+unsigned long last_sampling_time_dist, last_sampling_time_servo, last_sampling_time_serial; 
 bool event_dist, event_servo, event_serial; 
 
 // Servo speed control
@@ -66,7 +66,7 @@ void setup() {
   myservo.attach(PIN_SERVO);  
   myservo.writeMicroseconds(1520);
 // initialize global variables
-  last_sampling_time_dist = last_sampling_time_servo = last_sampling_time_serial = 0; // [3155] 샘플링 시각 기록 변수 초기화
+  last_sampling_time_dist = last_sampling_time_servo = last_sampling_time_serial = 0;
   event_dist = event_servo = event_serial = false;  
   dist_target = _DIST_TARGET; 
 
@@ -148,7 +148,7 @@ void loop() {
     else {
       duty_curr -= duty_chg_per_interval;
       if(duty_curr < duty_target) duty_curr = duty_target;
-    }       //[3166] 서보가 현재위치에서 목표위치에 도달할 때까지 duty_chg_per_interval값 마다 움직임(duty_curr에 duty_chg_per_interval값 더하고 빼줌)
+    }       
     myservo.writeMicroseconds(duty_target);
   }
 
